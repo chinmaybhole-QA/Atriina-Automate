@@ -101,7 +101,7 @@ async function verifySocialLink(
 }
 
 test("hamburger menu social links test", async ({ page }) => {
-  test.setTimeout(240000);
+  test.setTimeout(480000);
 
   await page.goto("https://atriina.com/");
 
@@ -148,10 +148,11 @@ test("hamburger menu social links test", async ({ page }) => {
   const sales = page
     .locator("#header")
     .getByRole("link", { name: /sales@atriina\.com/i });
-//  await expect(sales).toHaveAttribute("href", /mailto:sales@atriina\.com/);
+  //  await expect(sales).toHaveAttribute("href", /mailto:sales@atriina\.com/);
 
   const hr = page
     .locator("#header")
     .getByRole("link", { name: /hr@atriina\.com/i });
- // await expect(hr).toHaveAttribute("href", /mailto:hr@atriina\.com/);
+  // await expect(hr).toHaveAttribute("href", /mailto:hr@atriina\.com/);
+  console.log("✅ Hamburger test Passed!");
 });

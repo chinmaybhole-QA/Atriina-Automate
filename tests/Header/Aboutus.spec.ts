@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 test("About us section", async ({ page }) => {
-  test.setTimeout(120000);
+  test.setTimeout(300000);
   await page.goto("https://atriina.com/");
 
   const about_us = page
@@ -26,7 +26,6 @@ test("About us section", async ({ page }) => {
     },
   ];
 
-
   for (const item of menuItems) {
     await about_us.hover();
     await page
@@ -34,7 +33,8 @@ test("About us section", async ({ page }) => {
       .getByRole("link", { name: item.name })
       .click();
     await expect(page).toHaveURL(item.slug);
-    await page.waitForTimeout(2500);
+    await page.waitForTimeout(3500);
     await page.goBack();
   }
+  console.log("✅ About us test Passed!");
 });

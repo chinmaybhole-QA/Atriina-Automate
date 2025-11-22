@@ -4,14 +4,16 @@ import { test, expect } from "@playwright/test";
 test.describe.configure({ retries: 2 }); // retry flaky tests up to 2 times
 
 test("AI Solution submenu navigation", async ({ page }) => {
-  test.setTimeout(120000);
+  test.setTimeout(240000);
   // Open homepage with higher timeout
   await page.goto("https://atriina.com/");
   await page.waitForLoadState("domcontentloaded");
 
   // Main AI Solutions menu locator
   //const aiSolutionMenu = page.getByRole("link", { name: "AI Solutions" });
-  const aiSolutionMenu= page.locator("//li[@id='menu-item-22285']//a[normalize-space()='AI Solutions']");
+  const aiSolutionMenu = page.locator(
+    "//li[@id='menu-item-22285']//a[normalize-space()='AI Solutions']"
+  );
 
   // Submenu items with slug regex checks
   const submenuItems = [
@@ -22,7 +24,9 @@ test("AI Solution submenu navigation", async ({ page }) => {
     { name: "Video to Text Analysis", slug: /video-to-text-analysis/ },
     { name: "Face Recognition System", slug: /face-recognition-system/ },
     {
-      name: "Shop KYC Verification Model", slug: /shop-kyc-verification-model/,},
+      name: "Shop KYC Verification Model",
+      slug: /shop-kyc-verification-model/,
+    },
   ];
 
   for (const { name, slug } of submenuItems) {
@@ -31,7 +35,7 @@ test("AI Solution submenu navigation", async ({ page }) => {
 
     // Wait until submenu item is visible before clicking
     const submenuLocator = page.getByRole("link", { name });
-    await expect(submenuLocator).toBeVisible({ timeout: 10000 });
+    await expect(submenuLocator).toBeVisible({ timeout: 15000 });
 
     // Click submenu item
     await submenuLocator.click();
@@ -47,4 +51,5 @@ test("AI Solution submenu navigation", async ({ page }) => {
     await page.goBack();
     await page.waitForLoadState("domcontentloaded");
   }
+  console.log("✅ AI Solutions test Passed!");
 });

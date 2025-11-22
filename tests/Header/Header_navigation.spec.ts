@@ -19,8 +19,9 @@ test.describe("Main menu navigation", () => {
       test.setTimeout(240000);
       await page.goto("https://atriina.com/");
       await page.getByRole("link", { name, exact: true }).click();
-      await page.waitForTimeout(2500); 
+      await page.waitForTimeout(2500);
       await expect(page).toHaveURL(url);
     });
   }
+  console.log("✅ Header navigation test Passed!");
 });

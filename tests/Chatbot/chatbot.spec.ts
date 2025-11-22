@@ -52,6 +52,5 @@ test("Chatbot open on atriina.com", async ({ page }) => {
       .contentFrame()
       .getByText("Please fill out the form")
   );
+  console.log("✅ Chatbot test Passed!");
 });
-
-
